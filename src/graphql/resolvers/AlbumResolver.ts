@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { Album } from './../types/Album';
 import { Resolver, Query, Arg } from "type-graphql";
 import { Song } from '../types/Song';
@@ -6,8 +7,9 @@ const buildAlbum = (props: any) => {
     const album = new Album()
     album.id = props.id
     album.name = props.name
-    album.artist = props.artist
-    album.img = props.img
+    album.artist = props.artist,
+        album.img = props.img,
+        album.songs = buildSongs()
     return album
 }
 
