@@ -4,10 +4,10 @@ import { ObjectType, Field, ID } from "type-graphql";
 export class Song {
     @Field(type => ID)
     id: string;
-    @Field()
+    @Field({ description: "Song name" })
     name: string;
-    @Field()
+    @Field({ description: "track duraction" })
     duration: string;
-    @Field()
-    url: string;
+    @Field({ description: "url file track", nullable: true })
+    url?: string;
 }

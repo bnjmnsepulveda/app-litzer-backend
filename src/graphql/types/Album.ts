@@ -1,16 +1,16 @@
 import { ObjectType, Field, ID } from "type-graphql";
 import { Song } from "./Song";
 
-@ObjectType()
+@ObjectType({ description: "Album Schema" })
 export class Album {
     @Field(type => ID)
     id: string;
-    @Field()
+    @Field({ description: "Album name" })
     name: string;
-    @Field()
+    @Field({ description: "Artist name" })
     artist: string;
-    @Field()
+    @Field({ description: "Album image url" })
     img: string;
-    @Field(type => [Song])
+    @Field(type => [Song], { description: "Album Songs" })
     songs: Song[]
 }
