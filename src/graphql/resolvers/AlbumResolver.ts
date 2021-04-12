@@ -7,9 +7,9 @@ const buildAlbum = (props: any) => {
     const album = new Album()
     album.id = props.id
     album.name = props.name
-    album.artist = props.artist,
-        album.img = props.img,
-        album.songs = buildSongs()
+    album.artist = props.artist
+    album.img = props.img
+    album.songs = buildSongs()
     return album
 }
 
@@ -112,12 +112,12 @@ const albums = [
 @Resolver(Album)
 export class AlbumResolver {
 
-    @Query(returns => [Album])
+    @Query(returns => [Album], { description: "Find All Albums" })
     async albums(): Promise<Album[]> {
         return await albums
     }
 
-    @Query(returns => Album)
+    @Query(returns => Album, { description: "Find Album by ID", nullable: true })
     async albumById(@Arg('id') id: string) {
         return await albums.find(a => a.id === id);
     }
