@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { Album } from '../schema/types/Album';
 import { Resolver, Query, Arg } from "type-graphql";
-import AlbumService from './../../album/services/album.service'
+import AlbumService from '../../app-litzer/album/services/album.service'
 
 
 @Resolver(Album)

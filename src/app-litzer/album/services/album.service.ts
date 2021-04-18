@@ -1,5 +1,5 @@
-import { Song } from './../../graphql/schema/types/Song';
-import { Album } from './../../graphql/schema/types/Album';
+import { Song } from '../../../graphql/schema/types/Song';
+import { Album } from '../../../graphql/schema/types/Album';
 
 const buildAlbum = (props: any) => {
     const album = new Album()

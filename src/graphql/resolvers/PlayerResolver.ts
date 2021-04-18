@@ -1,9 +1,9 @@
 import "reflect-metadata";
 import { Resolver, Query, Arg, Mutation } from "type-graphql";
 import { Player } from "../schema/types/Player";
-import SongService from "../../song/services/song.service";
+import SongService from "../../app-litzer/song/services/song.service";
 import { Song } from "../schema/types/Song";
-import PlayerService from "../../player/services/player.service";
+import PlayerService from "../../app-litzer/player/services/player.service";
 
 @Resolver(Player)
 export class PlayerResolver {

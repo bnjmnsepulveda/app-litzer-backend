@@ -1,4 +1,4 @@
-import { AddSongDTO } from './../dto/add-song.dto';
+import { AddSongDTO } from '../dto/add-song.dto';
 import { PlayerModel, PlayerSongModel } from "../model/player.model";
 import { v4 as uuidv4 } from 'uuid';
 
