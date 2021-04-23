@@ -25,7 +25,7 @@ const songs: SongModel[] = [
 
 @Service()
 class SongRepository {
-    async findById(id: string): Promise<SongModel> {
+    async findById(id: string): Promise<SongModel> | undefined {
         return await songs.find(s => s.id === id)
     }
 }
