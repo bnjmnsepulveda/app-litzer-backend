@@ -10,11 +10,12 @@ class PlayerService {
 
     async save(name: string) {
         const id = uuidv4()
+        const queque: PlayerSongModel[] = []
         const player = {
             id,
             name,
             isPlaying: false,
-            queque: []
+            queque: queque
         }
         players.push(player)
         return await player

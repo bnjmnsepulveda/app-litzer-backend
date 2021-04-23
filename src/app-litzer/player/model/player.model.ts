@@ -4,7 +4,7 @@ export interface PlayerModel {
     name: string;
     isPlaying: boolean;
     playing?: PlayerSongModel;
-    queque: PlayerSongModel[];
+    queque?: PlayerSongModel[];
 }
 
 export interface PlayerSongModel {
