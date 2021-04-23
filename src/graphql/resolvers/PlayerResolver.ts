@@ -4,7 +4,9 @@ import { Player } from "../schema/types/Player";
 import SongService from "../../app-litzer/song/services/song.service";
 import { Song } from "../schema/types/Song";
 import PlayerService from "../../app-litzer/player/services/player.service";
+import { Service } from "typedi";
 
+@Service()
 @Resolver(Player)
 export class PlayerResolver {
 

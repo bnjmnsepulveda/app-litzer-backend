@@ -1,5 +1,6 @@
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from "type-graphql";
+import { Container } from "typedi";
 import { AlbumResolver } from './graphql/resolvers/AlbumResolver';
 import Express from "express";
 import { PlayerResolver } from './graphql/resolvers/PlayerResolver';
@@ -12,7 +13,8 @@ async function bootstrap() {
         resolvers: [
             AlbumResolver,
             PlayerResolver
-        ]
+        ],
+        container: Container
     });
     // Create the GraphQL server
     const server = new ApolloServer({
