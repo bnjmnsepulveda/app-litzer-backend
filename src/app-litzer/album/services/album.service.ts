@@ -1,5 +1,6 @@
 import { Song } from '../../../graphql/schema/types/Song';
 import { Album } from '../../../graphql/schema/types/Album';
+import { Service } from 'typedi';
 
 const buildAlbum = (props: any) => {
     const album = new Album()
@@ -107,13 +108,16 @@ const albums = [
     })
 ]
 
-const AlbumService = {
+@Service()
+class AlbumService {
+
     async findAll() {
         return await albums
-    },
+    }
+
     async findById(id: string) {
         return await albums.find(a => a.id === id)
     }
-}
 
+}
 export default AlbumService

@@ -10,23 +10,28 @@ import { Service } from "typedi";
 @Resolver(Player)
 export class PlayerResolver {
 
+    constructor(
+        private playerService: PlayerService,
+        private songService: SongService
+    ) { }
+
     @Mutation(returns => Player, { description: 'Create a new Player' })
     async createPlayer(@Arg('name') name: string) {
-        return await PlayerService.save(name)
+        return await this.playerService.save(name)
     }
 
     @Query(returns => Player, { description: 'Player running', nullable: true })
     async playerById(@Arg('id') id: string) {
-        return await PlayerService.findById(id)
+        return await this.playerService.findById(id)
     }
 
     @Mutation(returns => Song, { description: 'Song added to playlist' })
     async addSong(@Arg('playerId') playerId: string, @Arg('songId') songId: string) {
-        const song = await SongService.findById(songId)
+        const song = await this.songService.findById(songId)
         if (!song) {
             throw new Error(`Song id ${songId} not found`)
         }
-        return await PlayerService.addSong({
+        return await this.playerService.addSong({
             playerId,
             songId: song.id,
             songName: song.name,

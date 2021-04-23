@@ -8,14 +8,16 @@ import { Service } from "typedi";
 @Resolver(Album)
 export class AlbumResolver {
 
+    constructor(private albumService: AlbumService) { }
+
     @Query(returns => [Album], { description: "Find All Albums" })
     async albums(): Promise<Album[]> {
-        return await AlbumService.findAll()
+        return await this.albumService.findAll()
     }
 
     @Query(returns => Album, { description: "Find Album by ID", nullable: true })
     async albumById(@Arg('id') id: string) {
-        return await AlbumService.findById(id)
+        return await this.albumService.findById(id)
     }
 
 }

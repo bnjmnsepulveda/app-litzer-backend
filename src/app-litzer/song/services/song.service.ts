@@ -1,4 +1,5 @@
 import { SongModel } from "../model/song.model";
+import { Service } from "typedi";
 
 const songs: SongModel[] = [
     {
@@ -21,7 +22,8 @@ const songs: SongModel[] = [
     }
 ]
 
-const SongService = {
+@Service()
+class SongService {
     async findById(id: string) {
         return await songs.find(s => s.id === id)
     }

@@ -1,10 +1,12 @@
 import { AddSongDTO } from '../dto/add-song.dto';
 import { PlayerModel, PlayerSongModel } from "../model/player.model";
 import { v4 as uuidv4 } from 'uuid';
+import { Service } from 'typedi';
 
 const players: PlayerModel[] = []
 
-const PlayerService = {
+@Service()
+class PlayerService {
 
     async save(name: string) {
         const id = uuidv4()
@@ -16,11 +18,11 @@ const PlayerService = {
         }
         players.push(player)
         return await player
-    },
+    }
 
     async findById(id: string) {
         return await players.find(p => p.id === id)
-    },
+    }
 
     async addSong(addSong: AddSongDTO) {
         for (let x = 0; x < players.length; x++) {
