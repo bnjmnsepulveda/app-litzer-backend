@@ -17,7 +17,7 @@ export class PlayerResolver {
 
     @Mutation(returns => Player, { description: 'Create a new Player' })
     async createPlayer(@Arg('name') name: string) {
-        return await this.playerService.save(name)
+        return await this.playerService.create(name)
     }
 
     @Query(returns => Player, { description: 'Player running', nullable: true })
