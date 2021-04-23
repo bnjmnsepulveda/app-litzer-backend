@@ -1,6 +1,6 @@
 import { Service } from "typedi";
 import SongRepository from "../repositories/song.repository";
-import { Song } from "../dto/song";
+import { Song } from "../dto/song.dto";
 
 
 @Service()

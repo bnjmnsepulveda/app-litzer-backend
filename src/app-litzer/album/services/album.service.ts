@@ -1,4 +1,4 @@
-import { Album } from './../dto/album';
+import { Album } from '../dto/album.dto';
 import { Service } from 'typedi';
 import Albumrepository from '../repositories/album.repository';
 

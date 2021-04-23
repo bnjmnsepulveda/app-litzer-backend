@@ -1,4 +1,4 @@
-import { Song } from "../../song/dto/song";
+import { Song } from "../../song/dto/song.dto";
 
 export interface Album {
     id: string;
