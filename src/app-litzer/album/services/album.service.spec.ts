@@ -1,4 +1,4 @@
-import { AlbumModel } from './../model/album.model';
+import { AlbumModel } from '../model/album.model';
 import AlbumService from './album.service';
 
 const albums: AlbumModel[] = [{

@@ -82,7 +82,7 @@ const albums = [
 ]
 
 @Service()
-class Albumrepository {
+class AlbumRepository {
     async findAll(): Promise<AlbumModel[]> | undefined {
         return await albums
     }
@@ -91,4 +91,4 @@ class Albumrepository {
         return await albums.find(a => a.id === id)
     }
 }
-export default Albumrepository
+export default AlbumRepository
