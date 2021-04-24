@@ -7,7 +7,12 @@ import { PlayerDTO, PlayerSongDTO } from '../dto/player.dto';
 @Service()
 class SimplePlayerService {
 
-    players: PlayerModel[] = []
+    players: PlayerModel[] = [{
+        id: 'default',
+        isPlaying: false,
+        name: 'Simple Rock Player',
+        queque: []
+    }]
 
     async create(name: string): Promise<PlayerDTO> {
         const id = uuidv4()
