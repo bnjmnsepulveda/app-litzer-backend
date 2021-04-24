@@ -3,6 +3,7 @@ import { PlayerModel, PlayerSongModel } from "../model/player.model";
 import { v4 as uuidv4 } from 'uuid';
 import { Service } from 'typedi';
 import { PlayerDTO, PlayerSongDTO } from '../dto/player.dto';
+import PlayerNotFoundError from '../errors/player-not-found.error';
 
 @Service()
 class SimplePlayerService {
@@ -28,22 +29,26 @@ class SimplePlayerService {
     }
 
     async findById(id: string): Promise<PlayerDTO> {
-        return await this.players.find(p => p.id === id)
+        const player = await this.players.find(p => p.id === id)
+        if (!player) {
+            throw new PlayerNotFoundError(`Player id ${id} not found`)
+        }
+        return player
     }
 
     async addSong(addSong: AddSongDTO): Promise<PlayerSongDTO> {
-        for (let x = 0; x < this.players.length; x++) {
-            if (this.players[x].id === addSong.playerId) {
-                const song: PlayerSongModel = {
-                    id: addSong.songId,
-                    name: addSong.songName,
-                    duration: addSong.songDuration,
-                    url: addSong.songUrl
-                }
-                this.players[x].queque.push(song)
-                return song
-            }
+        const index = this.players.findIndex(p => p.id === addSong.playerId)
+        if (index === -1) {
+            throw new PlayerNotFoundError(`Player id ${addSong.playerId} not found`)
         }
+        const song: PlayerSongModel = {
+            id: addSong.songId,
+            name: addSong.songName,
+            duration: addSong.songDuration,
+            url: addSong.songUrl
+        }
+        this.players[index].queque.push(song)
+        return song
     }
 
 }

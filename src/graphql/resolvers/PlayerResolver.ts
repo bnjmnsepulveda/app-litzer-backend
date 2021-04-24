@@ -30,9 +30,6 @@ export class PlayerResolver {
     @Mutation(returns => Song, { description: 'Song added to playlist' })
     async addSong(@Arg('playerId') playerId: string, @Arg('songId') songId: string) {
         const song = await this.songService.findById(songId)
-        if (!song) {
-            throw new Error(`Song id ${songId} not found`)
-        }
         return await this.playerService.addSong({
             playerId,
             songId: song.id,

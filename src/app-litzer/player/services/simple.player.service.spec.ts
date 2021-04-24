@@ -1,5 +1,6 @@
 import { AddSongDTO } from '../dto/add-song.dto';
 import SimplePlayerService from './simple.player.service';
+import PlayerNotFoundError from '../errors/player-not-found.error';
 
 test('create a player', async () => {
     const service = new SimplePlayerService()
@@ -29,4 +30,17 @@ test('add song to player', async () => {
     const songAdded = await service.addSong(addSong)
     expect(songAdded.id).toEqual('1')
     expect(service.players[1].queque.length).toEqual(1)
+})
+
+
+test('throw a PlayerNotFoundError', async () => {
+    const service = new SimplePlayerService()
+    expect(async () => await service.findById('not-found')).rejects.toThrow(PlayerNotFoundError)
+    expect(async () => await service.addSong({
+        playerId: 'not-found',
+        songDuration: '--',
+        songId: 'id',
+        songName: 'any song',
+        songUrl: '--'
+    })).rejects.toThrow(PlayerNotFoundError)
 })
