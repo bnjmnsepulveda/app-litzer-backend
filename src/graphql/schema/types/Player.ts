@@ -7,7 +7,7 @@ export class Player {
     id: string;
     @Field({ description: "Player name" })
     name: string;
-    @Field({ description: "Playing song" })
+    @Field({ description: "Playing song", nullable: true })
     playing: Song;
     @Field(type => [Song], { description: "Queque Songs" })
     queque: Song[]
