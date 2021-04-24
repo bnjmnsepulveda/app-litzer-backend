@@ -1,5 +1,5 @@
 import { AlbumModel } from '../model/album.model';
-import AlbumService from './album.service';
+import SimpleAlbumService from './simple.album.service';
 
 const albums: AlbumModel[] = [{
     id: '1',
@@ -38,7 +38,7 @@ const repository = {
     }
 }
 
-const service = new AlbumService(repository)
+const service = new SimpleAlbumService(repository)
 
 test('Find album by id', async () => {
     const album = await service.findById('1')

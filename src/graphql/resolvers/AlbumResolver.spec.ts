@@ -1,6 +1,5 @@
 import { AlbumResolver } from './AlbumResolver';
 import { Album } from "../../app-litzer/album/dto/album.dto";
-import AlbumService from '../../app-litzer/album/services/album.service';
 
 const albums: Album[] = [{
     id: '1',
@@ -30,20 +29,16 @@ const albums: Album[] = [{
 }
 ]
 
-class Service extends AlbumService {
-    constructor() {
-        super(null)
-    }
+const service = {
+
     async findAll(): Promise<Album[]> {
         return await albums
-    }
-
+    },
     async findById(id: string): Promise<Album> {
         return await albums[0]
     }
-}
 
-const service = new Service()
+}
 
 test('Find all Albums', async () => {
     const resolver = new AlbumResolver(service)

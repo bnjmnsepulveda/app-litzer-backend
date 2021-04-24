@@ -1,14 +1,15 @@
 import "reflect-metadata";
 import { Album } from '../schema/types/Album';
 import { Resolver, Query, Arg } from "type-graphql";
-import AlbumService from '../../app-litzer/album/services/album.service'
-import { Service } from "typedi";
+import SimpleAlbumService from '../../app-litzer/album/services/simple.album.service'
+import { Service, Inject } from "typedi";
+import AlbumService from "../../app-litzer/album/services/album.service";
 
 @Service()
 @Resolver(Album)
 export class AlbumResolver {
 
-    constructor(private albumService: AlbumService) { }
+    constructor(@Inject(() => SimpleAlbumService) private albumService: AlbumService) { }
 
     @Query(returns => [Album], { description: "Find All Albums" })
     async albums(): Promise<Album[]> {

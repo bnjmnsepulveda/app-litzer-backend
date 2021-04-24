@@ -1,23 +1,11 @@
 import { Album } from '../dto/album.dto';
-import { Service } from 'typedi';
-import AlbumRepository from '../repositories/album.repository';
 
-@Service()
-class AlbumService {
+interface AlbumService {
 
-    constructor(private albumRepository: AlbumRepository) { }
+    findAll(): Promise<Album[]>;
 
-    async findAll(): Promise<Album[]> {
-        return await this.albumRepository.findAll()
-    }
-
-    async findById(id: string): Promise<Album> {
-        const album = await this.albumRepository.findById(id)
-        if (album) {
-            return album
-        }
-        throw Error(`Album id ${id} not found`)
-    }
+    findById(id: string): Promise<Album>;
 
 }
+
 export default AlbumService

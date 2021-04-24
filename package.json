@@ -12,7 +12,8 @@
   },
   "scripts": {
     "test": "jest",
-    "dev": "ts-node-dev --respawn --transpile-only ./src/app.ts"
+    "dev": "ts-node-dev --respawn --transpile-only ./src/app.ts",
+    "di": "ts-node-dev --respawn --transpile-only ./test-typedi.ts"
   },
   "keywords": [],
   "author": "",
