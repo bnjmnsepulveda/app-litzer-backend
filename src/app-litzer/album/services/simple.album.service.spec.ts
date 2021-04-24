@@ -1,5 +1,6 @@
 import { AlbumModel } from '../model/album.model';
 import SimpleAlbumService from './simple.album.service';
+import AlbumNotFoundError from '../errors/album-not-found.error';
 
 const albums: AlbumModel[] = [{
     id: '1',
@@ -34,6 +35,9 @@ const repository = {
         return await albums
     },
     async findById(id: string) {
+        if (id === 'album-not-found') {
+            return await undefined
+        }
         return await albums[0]
     }
 }
@@ -48,4 +52,8 @@ test('Find album by id', async () => {
 test('Find all album ', async () => {
     const albums = await service.findAll()
     expect(albums.length).toEqual(2)
+})
+
+test('Throw AlbumNotFound ', () => {
+    expect(async () => await service.findById('album-not-found')).rejects.toThrow(AlbumNotFoundError)
 })
