@@ -1,18 +1,20 @@
 import "reflect-metadata";
 import { Resolver, Query, Arg, Mutation } from "type-graphql";
 import { Player } from "../schema/types/Player";
-import SongService from "../../app-litzer/song/services/song.service";
+import SimpleSongService from "../../app-litzer/song/services/simple.song.service";
 import { Song } from "../schema/types/Song";
 import PlayerService from "../../app-litzer/player/services/player.service";
-import { Service } from "typedi";
+import { Service, Inject } from "typedi";
+import SimplePlayerService from "../../app-litzer/player/services/simple.player.service";
+import SongService from "../../app-litzer/song/services/song.service";
 
 @Service()
 @Resolver(Player)
 export class PlayerResolver {
 
     constructor(
-        private playerService: PlayerService,
-        private songService: SongService
+        @Inject(() => SimplePlayerService) private playerService: PlayerService,
+        @Inject(() => SimpleSongService) private songService: SongService
     ) { }
 
     @Mutation(returns => Player, { description: 'Create a new Player' })

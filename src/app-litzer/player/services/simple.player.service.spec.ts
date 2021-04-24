@@ -1,15 +1,15 @@
-import { AddSongDTO } from './../dto/add-song.dto';
-import PlayerService from "./player.service";
+import { AddSongDTO } from '../dto/add-song.dto';
+import SimplePlayerService from './simple.player.service';
 
 test('create a player', async () => {
-    const service = new PlayerService()
+    const service = new SimplePlayerService()
     const created = await service.create('player-test')
     expect(created).toBeDefined()
     expect(service.players.length).toEqual(1)
 })
 
 test('find player by id', async () => {
-    const service = new PlayerService()
+    const service = new SimplePlayerService()
     const created = await service.create('player-test')
     expect(created).toBeDefined()
     const finded = await service.findById(created.id)
@@ -17,7 +17,7 @@ test('find player by id', async () => {
 })
 
 test('add song to player', async () => {
-    const service = new PlayerService()
+    const service = new SimplePlayerService()
     const created = await service.create('player-test')
     expect(created).toBeDefined()
     const addSong: AddSongDTO = {

@@ -1,4 +1,4 @@
-import SongService from "./song.service";
+import SimpleSongService from "./simple.song.service";
 
 const repository = {
     async findById(id: string) {
@@ -11,7 +11,7 @@ const repository = {
     }
 }
 
-const service = new SongService(repository)
+const service = new SimpleSongService(repository)
 
 test('Find a song by id', async () => {
     const song = await service.findById('1')
