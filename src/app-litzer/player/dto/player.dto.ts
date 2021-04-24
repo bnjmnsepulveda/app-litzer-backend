@@ -1,13 +1,13 @@
 
-export interface Player {
+export interface PlayerDTO {
     id: string;
     name: string;
     isPlaying: boolean;
-    playing?: PlayerSong;
-    queque?: PlayerSong[];
+    playing?: PlayerSongDTO;
+    queque?: PlayerSongDTO[];
 }
 
-export interface PlayerSong {
+export interface PlayerSongDTO {
     id: string;
     name: string;
     duration: string;

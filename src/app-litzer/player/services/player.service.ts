@@ -2,14 +2,14 @@ import { AddSongDTO } from '../dto/add-song.dto';
 import { PlayerModel, PlayerSongModel } from "../model/player.model";
 import { v4 as uuidv4 } from 'uuid';
 import { Service } from 'typedi';
-import { Player, PlayerSong } from '../dto/player.dto';
+import { PlayerDTO, PlayerSongDTO } from '../dto/player.dto';
 
 @Service()
 class PlayerService {
 
     players: PlayerModel[] = []
 
-    async create(name: string): Promise<Player> {
+    async create(name: string): Promise<PlayerDTO> {
         const id = uuidv4()
         const queque: PlayerSongModel[] = []
         const player = {
@@ -22,11 +22,11 @@ class PlayerService {
         return await player
     }
 
-    async findById(id: string): Promise<Player> {
+    async findById(id: string): Promise<PlayerDTO> {
         return await this.players.find(p => p.id === id)
     }
 
-    async addSong(addSong: AddSongDTO): Promise<PlayerSong> {
+    async addSong(addSong: AddSongDTO): Promise<PlayerSongDTO> {
         for (let x = 0; x < this.players.length; x++) {
             if (this.players[x].id === addSong.playerId) {
                 const song: PlayerSongModel = {

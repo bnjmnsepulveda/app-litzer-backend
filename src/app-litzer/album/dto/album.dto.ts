@@ -1,9 +1,9 @@
-import { Song } from "../../song/dto/song.dto";
+import { SongDTO } from "../../song/dto/song.dto";
 
-export interface Album {
+export interface AlbumDTO {
     id: string;
     name: string;
     artist: string;
     img: string;
-    songs: Song[]
+    songs: SongDTO[]
 }

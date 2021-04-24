@@ -1,10 +1,10 @@
-import { Album } from '../dto/album.dto';
+import { AlbumDTO } from '../dto/album.dto';
 
 interface AlbumService {
 
-    findAll(): Promise<Album[]>;
+    findAll(): Promise<AlbumDTO[]>;
 
-    findById(id: string): Promise<Album>;
+    findById(id: string): Promise<AlbumDTO>;
 
 }
 

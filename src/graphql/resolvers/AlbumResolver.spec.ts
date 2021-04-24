@@ -1,7 +1,7 @@
 import { AlbumResolver } from './AlbumResolver';
-import { Album } from "../../app-litzer/album/dto/album.dto";
+import { AlbumDTO } from "../../app-litzer/album/dto/album.dto";
 
-const albums: Album[] = [{
+const albums: AlbumDTO[] = [{
     id: '1',
     name: 'runaway',
     artist: 'bon jovi',
@@ -31,10 +31,10 @@ const albums: Album[] = [{
 
 const service = {
 
-    async findAll(): Promise<Album[]> {
+    async findAll(): Promise<AlbumDTO[]> {
         return await albums
     },
-    async findById(id: string): Promise<Album> {
+    async findById(id: string): Promise<AlbumDTO> {
         return await albums[0]
     }
 

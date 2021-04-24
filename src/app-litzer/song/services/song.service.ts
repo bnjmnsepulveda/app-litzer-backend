@@ -1,6 +1,6 @@
 import { Service } from "typedi";
 import SongRepository from "../repositories/song.repository";
-import { Song } from "../dto/song.dto";
+import { SongDTO } from "../dto/song.dto";
 
 
 @Service()
@@ -8,7 +8,7 @@ class SongService {
 
     constructor(private songRepository: SongRepository) { }
 
-    async findById(id: string): Promise<Song> {
+    async findById(id: string): Promise<SongDTO> {
         const song = await this.songRepository.findById(id)
         if (song) {
             return song;
