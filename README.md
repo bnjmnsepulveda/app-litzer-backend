@@ -21,7 +21,7 @@ npm run dev
 
 - [x] Basic schema GRAPHQL 
 - [x] Basic service and app model
-- [ ] Add subcription for song added
+- [x] Add subcription for song added
 - [ ] Add MongoDB
 
 
