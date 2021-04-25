@@ -1,0 +1,170 @@
+[
+    {
+        "id": "1",
+        "img": "https://images-na.ssl-images-amazon.com/images/I/41X8BFZD2WL.jpg",
+        "artist": "Bon Jovi",
+        "name": "Runnaway",
+        "songs": [
+            {
+                "id": "1",
+                "name": "Runaway",
+                "duration": "3:30"
+            },
+            {
+                "id": "2",
+                "name": "Shot througt to the heart",
+                "duration": "3:30"
+            },
+            {
+                "id": "3",
+                "name": "I'll die for you",
+                "duration": "3:30"
+            }
+        ]
+    },
+    {
+        "id": "1",
+        "img": "https://images-na.ssl-images-amazon.com/images/I/818W3I9zksL.jpg",
+        "artist": "Journey",
+        "name": "Greiest hits",
+        "songs": []
+    },
+    {
+        "id": "3",
+        "img": "https://images-na.ssl-images-amazon.com/images/I/71wO5zSNFNL._SX466_.jpg",
+        "artist": "Trivium",
+        "name": "Ascendancy",
+        "songs": [
+            {
+                "id": "1",
+                "name": "Runaway",
+                "duration": "3:30"
+            },
+            {
+                "id": "2",
+                "name": "Separate ways",
+                "duration": "3:30"
+            },
+            {
+                "id": "3",
+                "name": "Push it to the limit",
+                "duration": "3:30"
+            }
+        ]
+    },
+    {
+        "id": "4",
+        "img": "https://www.todorock.com/wp-content/uploads/2019/09/judas-priest-painkiller-grande-1200x900.jpg",
+        "artist": "Judas Priest",
+        "name": "Painkiller",
+        "songs": [
+            {
+                "id": "1",
+                "name": "Runaway",
+                "duration": "3:30"
+            },
+            {
+                "id": "2",
+                "name": "Separate ways",
+                "duration": "3:30"
+            },
+            {
+                "id": "3",
+                "name": "Push it to the limit",
+                "duration": "3:30"
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "img": "https://http2.mlstatic.com/D_NQ_NP_756859-MLC42530810011_072020-O.jpg",
+        "artist": "Dio",
+        "name": "Holy Diver",
+        "songs": [
+            {
+                "id": "1",
+                "name": "Runaway",
+                "duration": "3:30"
+            },
+            {
+                "id": "2",
+                "name": "Separate ways",
+                "duration": "3:30"
+            },
+            {
+                "id": "3",
+                "name": "Push it to the limit",
+                "duration": "3:30"
+            }
+        ]
+    },
+    {
+        "id": "6",
+        "img": "https://images-na.ssl-images-amazon.com/images/I/71uysK6I3pL._SL1060_.jpg",
+        "artist": "Nightwish",
+        "name": "Once",
+        "songs": [
+            {
+                "id": "1",
+                "name": "Runaway",
+                "duration": "3:30"
+            },
+            {
+                "id": "2",
+                "name": "Separate ways",
+                "duration": "3:30"
+            },
+            {
+                "id": "3",
+                "name": "Push it to the limit",
+                "duration": "3:30"
+            }
+        ]
+    },
+    {
+        "id": "7",
+        "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/5/9/0/9/31266.jpg",
+        "artist": "Five Finger Death Punch",
+        "name": "Greatests hits",
+        "songs": [
+            {
+                "id": "1",
+                "name": "Runaway",
+                "duration": "3:30"
+            },
+            {
+                "id": "2",
+                "name": "Separate ways",
+                "duration": "3:30"
+            },
+            {
+                "id": "3",
+                "name": "Push it to the limit",
+                "duration": "3:30"
+            }
+        ]
+    },
+    {
+        "id": "8",
+        "img": "https://images-na.ssl-images-amazon.com/images/I/81gcQXWNsYL._SL1425_.jpg",
+        "artist": "Disturbed",
+        "name": "Inmortalized",
+        "songs": [
+            {
+                "id": "1",
+                "name": "Runaway",
+                "duration": "3:30"
+            },
+            {
+                "id": "2",
+                "name": "Separate ways",
+                "duration": "3:30"
+            },
+            {
+                "id": "3",
+                "name": "Push it to the limit",
+                "duration": "3:30"
+            }
+        ]
+    }
+]

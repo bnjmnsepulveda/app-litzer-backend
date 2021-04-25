@@ -56,8 +56,8 @@ test('add song to player', async () => {
         async create(p: PlayerModel) {
             return await p
         },
-        update(p: PlayerModel) {
-            throw Error()
+        async update(p: PlayerModel) {
+            return await p
         }
     }
     const service = new SimplePlayerService(repository)

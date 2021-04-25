@@ -1,11 +1,12 @@
 import PlayerRepository from "./player.repository";
 import { PlayerModel } from "../model/player.model";
-import { Service } from "typedi";
+import { Service, Inject } from "typedi";
 
 @Service()
 class InMemoryPlayerRepository implements PlayerRepository {
 
-    private players: PlayerModel[] = []
+    @Inject('players.data')
+    private players: PlayerModel[]
 
     async create(player: PlayerModel): Promise<PlayerModel> {
         this.players.push(player)

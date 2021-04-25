@@ -5,10 +5,13 @@ import { AlbumResolver } from './graphql/resolvers/AlbumResolver';
 import Express from "express";
 import { PlayerResolver } from './graphql/resolvers/PlayerResolver';
 import { createServer } from 'http';
+import initGlobalContainer from './ioc-container';
 
 const PORT = process.env.PORT || 5000;
 
 async function bootstrap() {
+    // init global containr with in memory data
+    initGlobalContainer()
     //  Building schema here
     const schema = await buildSchema({
         resolvers: [
@@ -22,7 +25,7 @@ async function bootstrap() {
         schema,
         playground: true
     });
-
+    // Create Http Server
     const app = Express();
     const httpServer = createServer(app)
     apolloServer.applyMiddleware({ app });
