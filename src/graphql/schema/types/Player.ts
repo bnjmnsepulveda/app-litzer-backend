@@ -1,5 +1,5 @@
 import { ObjectType, Field, ID } from "type-graphql";
-import { Song } from "./Song";
+import { PlayerSong } from "./PlayerSong";
 
 @ObjectType({ description: "Player Schema" })
 export class Player {
@@ -8,7 +8,7 @@ export class Player {
     @Field({ description: "Player name" })
     name: string;
     @Field({ description: "Playing song", nullable: true })
-    playing: Song;
-    @Field(type => [Song], { description: "Queque Songs" })
-    queque: Song[]
+    playingNow: PlayerSong;
+    @Field(type => [PlayerSong], { description: "Queque Songs" })
+    playlist: PlayerSong[]
 }

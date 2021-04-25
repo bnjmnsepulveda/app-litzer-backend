@@ -2,16 +2,16 @@ import { ObjectType, Field } from "type-graphql";
 
 @ObjectType({ description: "Song Schema" })
 export class SongAddedNotification {
-    @Field(type => String)
+    @Field(type => String, { description: "Player id" })
     playerId: string;
-    @Field(type => String)
+    @Field(type => String, { description: "Song id" })
     songId: string;
-    @Field()
+    @Field({ description: "Datetime when song was added" })
     addedAt: Date;
     @Field({ description: "Song name" })
     name: string;
-    @Field({ description: "url file track", nullable: true })
-    url?: string;
+    @Field({ description: "url file track" })
+    url: string;
 }
 
 export interface SongAddedNotificationPayload {
@@ -19,5 +19,5 @@ export interface SongAddedNotificationPayload {
     addedAt: Date;
     songId: string;
     name: string;
-    url?: string;
+    url: string;
 }
