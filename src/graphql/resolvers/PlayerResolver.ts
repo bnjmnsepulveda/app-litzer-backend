@@ -47,6 +47,7 @@ export class PlayerResolver {
 
         publish({
             playerId: addSongInput.playerId,
+            addedAt: new Date(),
             song: songAdded
         })
 
