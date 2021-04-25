@@ -2,14 +2,12 @@
 export interface PlayerDTO {
     id: string;
     name: string;
-    isPlaying: boolean;
-    playing?: PlayerSongDTO;
-    queque?: PlayerSongDTO[];
+    playlist: PlaylistSongDTO[];
 }
 
-export interface PlayerSongDTO {
+export interface PlaylistSongDTO {
     id: string;
+    addedAt: Date;
     name: string;
-    duration: string;
     url?: string;
 }

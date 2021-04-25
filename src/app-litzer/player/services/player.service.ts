@@ -1,5 +1,5 @@
 import { AddSongDTO } from '../dto/add-song.dto';
-import { PlayerDTO, PlayerSongDTO } from '../dto/player.dto';
+import { PlayerDTO, PlaylistSongDTO } from '../dto/player.dto';
 
 interface PlayerService {
 
@@ -7,7 +7,7 @@ interface PlayerService {
 
     findById(id: string): Promise<PlayerDTO>;
 
-    addSong(addSong: AddSongDTO): Promise<PlayerSongDTO>;
+    addSong(addSong: AddSongDTO): Promise<PlaylistSongDTO>;
 
 }
 

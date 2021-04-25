@@ -2,14 +2,12 @@
 export interface PlayerModel {
     id: string;
     name: string;
-    isPlaying: boolean;
-    playing?: PlayerSongModel;
-    queque?: PlayerSongModel[];
+    playlist: PlaylistSongModel[];
 }
 
-export interface PlayerSongModel {
+export interface PlaylistSongModel {
     id: string;
+    addedAt: Date;
     name: string;
-    duration: string;
-    url?: string;
+    url: string;
 }

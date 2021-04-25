@@ -1,53 +1,50 @@
 import { AddSongDTO } from '../dto/add-song.dto';
-import { PlayerModel, PlayerSongModel } from "../model/player.model";
 import { v4 as uuidv4 } from 'uuid';
-import { Service } from 'typedi';
-import { PlayerDTO, PlayerSongDTO } from '../dto/player.dto';
+import { Service, Inject } from 'typedi';
+import { PlayerDTO, PlaylistSongDTO } from '../dto/player.dto';
 import PlayerNotFoundError from '../errors/player-not-found.error';
+import InMemoryPlayerRepository from '../repositories/in-memory.player.repository';
+import PlayerRepository from '../repositories/player.repository';
+import { PlaylistSongModel } from '../model/player.model';
 
 @Service()
 class SimplePlayerService {
 
-    players: PlayerModel[] = [{
-        id: 'default',
-        isPlaying: false,
-        name: 'Simple Rock Player',
-        queque: []
-    }]
+    constructor(
+        @Inject(() => InMemoryPlayerRepository) private playerRepsoitory: PlayerRepository
+    ) { }
 
     async create(name: string): Promise<PlayerDTO> {
         const id = uuidv4()
-        const queque: PlayerSongModel[] = []
-        const player = {
+        const player = await this.playerRepsoitory.create({
             id,
             name,
-            isPlaying: false,
-            queque: queque
-        }
-        this.players.push(player)
+            playlist: []
+        })
         return await player
     }
 
     async findById(id: string): Promise<PlayerDTO> {
-        const player = await this.players.find(p => p.id === id)
+        const player = await this.playerRepsoitory.findById(id)
         if (!player) {
             throw new PlayerNotFoundError(`Player id ${id} not found`)
         }
         return player
     }
 
-    async addSong(addSong: AddSongDTO): Promise<PlayerSongDTO> {
-        const index = this.players.findIndex(p => p.id === addSong.playerId)
-        if (index === -1) {
+    async addSong(addSong: AddSongDTO): Promise<PlaylistSongDTO> {
+        const player = await this.playerRepsoitory.findById(addSong.playerId)
+        if (!player) {
             throw new PlayerNotFoundError(`Player id ${addSong.playerId} not found`)
         }
-        const song: PlayerSongModel = {
+        const song: PlaylistSongModel = {
             id: addSong.songId,
+            addedAt: new Date(),
             name: addSong.songName,
-            duration: addSong.songDuration,
             url: addSong.songUrl
         }
-        this.players[index].queque.push(song)
+        player.playlist.push(song)
+        this.playerRepsoitory.update(player)
         return song
     }
 

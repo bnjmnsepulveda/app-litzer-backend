@@ -41,14 +41,15 @@ export class PlayerResolver {
             playerId: addSongInput.playerId,
             songId: song.id,
             songName: song.name,
-            songDuration: song.duration,
             songUrl: song.url
         })
 
         publish({
             playerId: addSongInput.playerId,
-            addedAt: new Date(),
-            song: songAdded
+            songId: songAdded.id,
+            addedAt: songAdded.addedAt,
+            name: songAdded.name,
+            url: songAdded.url
         })
 
         return songAdded
