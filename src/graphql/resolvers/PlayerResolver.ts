@@ -34,8 +34,9 @@ export class PlayerResolver {
         @Arg('AddSongInput') addSongInput: AddSongInput,
         @PubSub('SONG_ADDED_NOTIFICATION') publish: Publisher<SongAddedNotificationPayload>
     ) {
+
         const song = await this.songService.findById(addSongInput.songId)
-        console.log('adding-song', song)
+
         const songAdded = await this.playerService.addSong({
             playerId: addSongInput.playerId,
             songId: song.id,
@@ -43,10 +44,12 @@ export class PlayerResolver {
             songDuration: song.duration,
             songUrl: song.url
         })
+
         publish({
             playerId: addSongInput.playerId,
             song: songAdded
         })
+
         return songAdded
     }
 

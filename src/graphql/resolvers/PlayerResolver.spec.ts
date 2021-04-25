@@ -2,6 +2,7 @@ import { PlayerResolver } from './PlayerResolver';
 import { AddSongDTO } from '../../app-litzer/player/dto/add-song.dto';
 import { PlayerDTO, PlayerSongDTO } from '../../app-litzer/player/dto/player.dto';
 import { SongDTO } from '../../app-litzer/song/dto/song.dto';
+import { SongAddedNotificationPayload } from '../schema/types/SongAddedNotification';
 
 describe('PlayerResolver', () => {
 
@@ -54,7 +55,11 @@ describe('PlayerResolver', () => {
             playerId: 'player-id',
             songId: 'song-id'
         }
-        const song = await resolver.addSong(input, null)
+        const publishMock = async (payload: SongAddedNotificationPayload) => {
+            expect(payload.playerId).toEqual(input.playerId)
+            expect(payload.song.id).toEqual(input.songId)
+        }
+        const song = await resolver.addSong(input, publishMock)
         expect(song.id).toEqual('song-id')
         expect(song.name).toEqual('runaway')
     })
