@@ -50,7 +50,11 @@ describe('PlayerResolver', () => {
         expect(player.id).toEqual('1')
     })
     it('add song', async () => {
-        const song = await resolver.addSong('player-id', 'song-id')
+        const input = {
+            playerId: 'player-id',
+            songId: 'song-id'
+        }
+        const song = await resolver.addSong(input, null)
         expect(song.id).toEqual('song-id')
         expect(song.name).toEqual('runaway')
     })

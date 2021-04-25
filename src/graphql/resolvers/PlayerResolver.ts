@@ -1,5 +1,6 @@
 import "reflect-metadata";
-import { Resolver, Query, Arg, Mutation } from "type-graphql";
+import { AddSongInput } from './../schema/inputs/AddSongInput';
+import { Resolver, Query, Arg, Mutation, Subscription, Root, PubSub, Publisher } from "type-graphql";
 import { Player } from "../schema/types/Player";
 import SimpleSongService from "../../app-litzer/song/services/simple.song.service";
 import { Song } from "../schema/types/Song";
@@ -7,6 +8,7 @@ import PlayerService from "../../app-litzer/player/services/player.service";
 import { Service, Inject } from "typedi";
 import SimplePlayerService from "../../app-litzer/player/services/simple.player.service";
 import SongService from "../../app-litzer/song/services/song.service";
+import { SongAddedNotification, SongAddedNotificationPayload } from "../schema/types/SongAddedNotification";
 
 @Service()
 @Resolver(Player)
@@ -28,16 +30,35 @@ export class PlayerResolver {
     }
 
     @Mutation(returns => Song, { description: 'Song added to playlist' })
-    async addSong(@Arg('playerId') playerId: string, @Arg('songId') songId: string) {
-        const song = await this.songService.findById(songId)
-        return await this.playerService.addSong({
-            playerId,
+    async addSong(
+        @Arg('AddSongInput') addSongInput: AddSongInput,
+        @PubSub('SONG_ADDED_NOTIFICATION') publish: Publisher<SongAddedNotificationPayload>
+    ) {
+        const song = await this.songService.findById(addSongInput.songId)
+        console.log('adding-song', song)
+        const songAdded = await this.playerService.addSong({
+            playerId: addSongInput.playerId,
             songId: song.id,
             songName: song.name,
             songDuration: song.duration,
             songUrl: song.url
         })
+        publish({
+            playerId: addSongInput.playerId,
+            song: songAdded
+        })
+        return songAdded
     }
 
+    @Subscription({
+        topics: 'SONG_ADDED_NOTIFICATION',
+        filter: ({ payload, args }) => args.playerId === payload.playerId
+    })
+    songAddedNotification(
+        @Root() payload: SongAddedNotificationPayload,
+        @Arg('playerId') playerId: string
+    ): SongAddedNotification {
+        return payload
+    }
 
 }
