@@ -51,6 +51,9 @@ class SimplePlayerService implements PlayerService {
         const player = await this.findById(playerId)
         player.playingNow = player.playlist.shift()
         await this.playerRepository.update(player)
+        if (!player.playingNow) {
+            console.log(`Playlist player id ${playerId} is empty`)
+        }
         return await player.playingNow
     }
 

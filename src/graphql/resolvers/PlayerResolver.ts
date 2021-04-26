@@ -55,7 +55,7 @@ export class PlayerResolver {
         return songAdded
     }
 
-    @Mutation(returns => PlayerSong, { description: "Play next song from Player playlist " })
+    @Mutation(returns => PlayerSong, { description: "Play next song from Player playlist ", nullable: true })
     async nextSongToPlay(@Arg('playerId') playerId: string) {
         return await this.playerService.nextSongToPlay(playerId)
     }
