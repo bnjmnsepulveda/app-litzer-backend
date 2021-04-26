@@ -3,12 +3,12 @@ import { AddSongInput } from './../schema/inputs/AddSongInput';
 import { Resolver, Query, Arg, Mutation, Subscription, Root, PubSub, Publisher } from "type-graphql";
 import { Player } from "../schema/types/Player";
 import SimpleSongService from "../../app-litzer/song/services/simple.song.service";
-import { Song } from "../schema/types/Song";
 import PlayerService from "../../app-litzer/player/services/player.service";
 import { Service, Inject } from "typedi";
 import SimplePlayerService from "../../app-litzer/player/services/simple.player.service";
 import SongService from "../../app-litzer/song/services/song.service";
 import { SongAddedNotification, SongAddedNotificationPayload } from "../schema/types/SongAddedNotification";
+import { PlayerSong } from "../schema/types/PlayerSong";
 
 @Service()
 @Resolver(Player)
@@ -29,8 +29,8 @@ export class PlayerResolver {
         return await this.playerService.findById(id)
     }
 
-    @Mutation(returns => Song, { description: 'Song added to playlist' })
-    async addSong(
+    @Mutation(returns => PlayerSong, { description: 'Add song to playlist' })
+    async addSongToPlaylist(
         @Arg('AddSongInput') addSongInput: AddSongInput,
         @PubSub('SONG_ADDED_NOTIFICATION') publish: Publisher<SongAddedNotificationPayload>
     ) {
@@ -53,6 +53,11 @@ export class PlayerResolver {
         })
 
         return songAdded
+    }
+
+    @Mutation(returns => PlayerSong, { description: "Play next song from Player playlist " })
+    async nextSongToPlay(@Arg('playerId') playerId: string) {
+        return await this.playerService.nextSongToPlay(playerId)
     }
 
     @Subscription({

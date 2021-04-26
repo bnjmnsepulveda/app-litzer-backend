@@ -6,26 +6,28 @@ import PlayerNotFoundError from '../errors/player-not-found.error';
 import InMemoryPlayerRepository from '../repositories/in-memory.player.repository';
 import PlayerRepository from '../repositories/player.repository';
 import { PlaylistSongModel } from '../model/player.model';
+import PlayerService from './player.service';
 
 @Service()
-class SimplePlayerService {
+class SimplePlayerService implements PlayerService {
 
     constructor(
-        @Inject(() => InMemoryPlayerRepository) private playerRepsoitory: PlayerRepository
+        @Inject(() => InMemoryPlayerRepository) private playerRepository: PlayerRepository
     ) { }
 
     async create(name: string): Promise<PlayerDTO> {
         const id = uuidv4()
-        const player = await this.playerRepsoitory.create({
+        const player = await this.playerRepository.create({
             id,
             name,
+            playingNow: null,
             playlist: []
         })
         return await player
     }
 
     async findById(id: string): Promise<PlayerDTO> {
-        const player = await this.playerRepsoitory.findById(id)
+        const player = await this.playerRepository.findById(id)
         if (!player) {
             throw new PlayerNotFoundError(`Player id ${id} not found`)
         }
@@ -33,7 +35,7 @@ class SimplePlayerService {
     }
 
     async addSong(addSong: AddSongDTO): Promise<PlaylistSongDTO> {
-        const player = await this.playerRepsoitory.findById(addSong.playerId)
+        const player = await this.playerRepository.findById(addSong.playerId)
         if (!player) {
             throw new PlayerNotFoundError(`Player id ${addSong.playerId} not found`)
         }
@@ -44,9 +46,17 @@ class SimplePlayerService {
             url: addSong.songUrl
         }
         player.playlist.push(song)
-        this.playerRepsoitory.update(player)
+        this.playerRepository.update(player)
         return song
     }
+
+    async nextSongToPlay(playerId: string): Promise<PlaylistSongDTO> {
+        const player = await this.playerRepository.findById(playerId)
+        player.playingNow = player.playlist.shift()
+        await this.playerRepository.update(player)
+        return await player.playingNow
+    }
+
 
 }
 

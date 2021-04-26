@@ -26,6 +26,7 @@ test('find player by id', async () => {
         async findById(id: string) {
             return await {
                 id,
+                playingNow: null,
                 name: 'player-test',
                 playlist: []
             }
@@ -49,6 +50,7 @@ test('add song to player', async () => {
         async findById(id: string) {
             return await {
                 id,
+                playingNow: null,
                 name: 'player-test',
                 playlist: []
             }
@@ -73,6 +75,45 @@ test('add song to player', async () => {
     expect(songAdded.id).toEqual('1')
 })
 
+test('next song to play', async () => {
+
+    const playermock: PlayerModel = {
+        id: 'player-test',
+        playingNow: null,
+        name: 'player-test',
+        playlist: [{
+            id: '1',
+            name: 'song1',
+            addedAt: null,
+            url: 'song1.avi'
+        },
+        {
+            id: '2',
+            name: 'song2',
+            addedAt: null,
+            url: 'song2.avi'
+        }]
+    }
+    const repository: PlayerRepository = {
+        async findById(id: string) {
+            return await playermock
+        },
+        async create(p: PlayerModel) {
+            return await p
+        },
+        async update(p: PlayerModel) {
+            return await p
+        }
+    }
+    const service = new SimplePlayerService(repository)
+    const nextSong = await service.nextSongToPlay('player-test')
+    const playerUpdated = await service.findById('player-test')
+
+    expect(nextSong.id).toEqual('1')
+    expect(playerUpdated.playlist.length).toEqual(1)
+    expect(playerUpdated.playingNow.id).toEqual('1')
+
+})
 
 test('throw a PlayerNotFoundError', async () => {
     const repository: PlayerRepository = {

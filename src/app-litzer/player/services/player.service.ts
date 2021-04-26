@@ -9,6 +9,8 @@ interface PlayerService {
 
     addSong(addSong: AddSongDTO): Promise<PlaylistSongDTO>;
 
+    nextSongToPlay(playerId: string): Promise<PlaylistSongDTO>;
+
 }
 
 export default PlayerService

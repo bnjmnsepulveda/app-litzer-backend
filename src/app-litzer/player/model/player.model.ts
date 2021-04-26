@@ -2,6 +2,7 @@
 export interface PlayerModel {
     id: string;
     name: string;
+    playingNow: PlaylistSongModel;
     playlist: PlaylistSongModel[];
 }
 
