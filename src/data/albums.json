@@ -8,17 +8,20 @@
             {
                 "id": "1",
                 "name": "Runaway",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             },
             {
                 "id": "2",
                 "name": "Shot througt to the heart",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             },
             {
                 "id": "3",
                 "name": "I'll die for you",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             }
         ]
     },
@@ -38,17 +41,20 @@
             {
                 "id": "1",
                 "name": "Runaway",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             },
             {
                 "id": "2",
                 "name": "Separate ways",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             },
             {
                 "id": "3",
                 "name": "Push it to the limit",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             }
         ]
     },
@@ -61,17 +67,20 @@
             {
                 "id": "1",
                 "name": "Runaway",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             },
             {
                 "id": "2",
                 "name": "Separate ways",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             },
             {
                 "id": "3",
                 "name": "Push it to the limit",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             }
         ]
     },
@@ -84,17 +93,20 @@
             {
                 "id": "1",
                 "name": "Runaway",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             },
             {
                 "id": "2",
                 "name": "Separate ways",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             },
             {
                 "id": "3",
                 "name": "Push it to the limit",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             }
         ]
     },
@@ -107,17 +119,20 @@
             {
                 "id": "1",
                 "name": "Runaway",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             },
             {
                 "id": "2",
                 "name": "Separate ways",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             },
             {
                 "id": "3",
                 "name": "Push it to the limit",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             }
         ]
     },
@@ -130,17 +145,20 @@
             {
                 "id": "1",
                 "name": "Runaway",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             },
             {
                 "id": "2",
                 "name": "Separate ways",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             },
             {
                 "id": "3",
                 "name": "Push it to the limit",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             }
         ]
     },
@@ -153,17 +171,20 @@
             {
                 "id": "1",
                 "name": "Runaway",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             },
             {
                 "id": "2",
                 "name": "Separate ways",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             },
             {
                 "id": "3",
                 "name": "Push it to the limit",
-                "duration": "3:30"
+                "duration": "3:30",
+                "url": "file.avi"
             }
         ]
     }

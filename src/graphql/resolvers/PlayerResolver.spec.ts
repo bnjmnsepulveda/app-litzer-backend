@@ -32,8 +32,13 @@ describe('PlayerResolver', () => {
                 url: ''
             }
         },
-        nextSongToPlay(playerId: string): Promise<PlaylistSongDTO> {
-            throw new Error("Method not implemented.");
+        async nextSongToPlay(playerId: string): Promise<PlaylistSongDTO> {
+            return await {
+                id: 'next-song',
+                addedAt: new Date(),
+                name: 'next-song',
+                url: 'next-song-url'
+            }
         }
     }
     const songService = {
@@ -42,7 +47,8 @@ describe('PlayerResolver', () => {
             return await {
                 duration: '1:00',
                 id,
-                name: 'runaway'
+                name: 'runaway',
+                url: 'runaway.avi'
             }
         }
     }
@@ -69,6 +75,11 @@ describe('PlayerResolver', () => {
         const song = await resolver.addSongToPlaylist(input, publishMock)
         expect(song.id).toEqual('song-id')
         expect(song.name).toEqual('runaway')
+    })
+
+    it('next song ', async () => {
+        const song = await resolver.nextSongToPlay('player-test')
+        expect(song.id).toEqual('next-song')
     })
 
 })
