@@ -35,10 +35,7 @@ class SimplePlayerService implements PlayerService {
     }
 
     async addSong(addSong: AddSongDTO): Promise<PlaylistSongDTO> {
-        const player = await this.playerRepository.findById(addSong.playerId)
-        if (!player) {
-            throw new PlayerNotFoundError(`Player id ${addSong.playerId} not found`)
-        }
+        const player = await this.findById(addSong.playerId)
         const song: PlaylistSongModel = {
             id: addSong.songId,
             addedAt: new Date(),
@@ -51,7 +48,7 @@ class SimplePlayerService implements PlayerService {
     }
 
     async nextSongToPlay(playerId: string): Promise<PlaylistSongDTO> {
-        const player = await this.playerRepository.findById(playerId)
+        const player = await this.findById(playerId)
         player.playingNow = player.playlist.shift()
         await this.playerRepository.update(player)
         return await player.playingNow
